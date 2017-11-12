@@ -13,7 +13,11 @@ motor.setup()
 turn.setup()
 turn.home()
 
+scanning_delay = 2
+
 while True:
+	time.sleep(scanning_delay)
+	
 	ret, frame = cap.read()
 
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
