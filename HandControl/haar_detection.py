@@ -14,6 +14,27 @@ motor.setup()
 turn.setup()
 turn.home()
 
+def forward():
+	print "go forward"
+	motor.forwardWithSpeed()
+	time.sleep(1)
+	motor.stop()
+
+def right_forward():
+	print "turn right"
+	turn.turn_right()
+	motor.forwardWithSpeed()
+	time.sleep(1)
+	motor.stop()
+	turn.home()
+
+def left_forward():
+	print "turn left"
+	turn.turn_left()
+	motor.forwardWithSpeed()
+	time.sleep(1)
+	motor.stop()
+	turn.home()
 
 while True:
 
@@ -40,25 +61,3 @@ while True:
 # When everything done, release the capture
 cap.release()
 cv2.destroyAllWindows()
-
-def forward():
-	print "go forward"
-	motor.forwardWithSpeed()
-	time.sleep(1)
-	motor.stop()
-
-def right_forward():
-	print "turn right"
-	turn.turn_right()
-	motor.forwardWithSpeed()
-	time.sleep(1)
-	motor.stop()
-	turn.home()
-
-def left_forward():
-	print "turn left"
-	turn.turn_left()
-	motor.forwardWithSpeed()
-	time.sleep(1)
-	motor.stop()
-	turn.home()
