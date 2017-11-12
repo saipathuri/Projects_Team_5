@@ -15,29 +15,29 @@ turn.home()
 
 while True:
 	ret, frame = cap.read()
-	
+
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-	
+
 	faces = faceCascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
-	
+
 	for (x, y, w, h) in faces:
 		cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
 		if x < 215:
 			print "turn left"
 			turn.turn_left()
-			motor.forward_with_speed()
+			motor.forwardWithSpeed()
 			time.sleep(1)
 			motor.stop()
 			turn.home()
 		elif x > 215 and x < 430:
 			print "go forward"
-			motor.forward_with_speed()
+			motor.forwardWithSpeed()
 			time.sleep(1)
 			motor.stop()
 		else:
 			print "turn right"
 			turn.turn_right()
-			motor.forward_with_speed()
+			motor.forwardWithSpeed()
 			time.sleep(1)
 			motor.stop()
 			turn.home()
