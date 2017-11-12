@@ -21,6 +21,13 @@ def forward():
 	time.sleep(1)
 	motor.stop()
 
+def backward():
+	turn.home()
+	print "go backward"
+	motor.backwardWithSpeed(spd=100)
+	time.sleep(1)
+	motor.stop()
+
 def right_forward():
 	turn.home()
 	print "turn right"
@@ -46,14 +53,17 @@ while True:
 
 	hands = handCascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
 
-	for (x, y, w, h) in hands:
-		cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
-		if x < 215:
-			Thread(target = left_forward).start()
-		elif x > 215 and x < 430:
-			Thread(target = forward).start()
-		else:
-			Thread(target = right_forward).start()
+        if len(hands) > 2:
+        	Thread(target = backward).start()        
+        else:
+                for (x, y, w, h) in hands:
+                        cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
+		        if x < 215:
+			        Thread(target = left_forward).start()
+		        elif x > 215 and x < 430:
+			        Thread(target = forward).start()
+		        else:
+			        Thread(target = right_forward).start()
 
 	cv2.imshow('frame',frame)
 	if cv2.waitKey(1) & 0xFF == ord('q'):
