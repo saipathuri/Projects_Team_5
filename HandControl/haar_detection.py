@@ -29,7 +29,7 @@ while True:
             time.sleep(1)
             motor.stop()
             turn.home()
-        elif x > 215 && x < 430:
+        elif x > 215 and x < 430:
             print "go forward"
             motor.forward_with_speed()
             time.sleep(1)
