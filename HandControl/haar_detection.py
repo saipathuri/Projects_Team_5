@@ -15,12 +15,14 @@ turn.setup()
 turn.home()
 
 def forward():
+	turn.home()
 	print "go forward"
 	motor.forwardWithSpeed(spd=100)
 	time.sleep(1)
 	motor.stop()
 
 def right_forward():
+	turn.home()
 	print "turn right"
 	turn.turn_right()
 	motor.forwardWithSpeed(spd=100)
@@ -30,6 +32,7 @@ def right_forward():
 
 def left_forward():
 	print "turn left"
+	turn.home()
 	turn.turn_left()
 	motor.forwardWithSpeed(spd=100)
 	time.sleep(1)
@@ -37,8 +40,6 @@ def left_forward():
 	turn.home()
 
 while True:
-
-
 	ret, frame = cap.read()
 
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
