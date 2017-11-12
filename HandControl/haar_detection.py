@@ -7,7 +7,7 @@ import time
 from threading import Thread
 
 cap = cv2.VideoCapture(0)
-cascPath = "closed_front_palm.xml"
+cascPath = "closed_frontal_palm.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
 
 motor.setup()
@@ -16,14 +16,14 @@ turn.home()
 
 def forward():
 	print "go forward"
-	motor.forwardWithSpeed()
+	motor.forwardWithSpeed(spd=100)
 	time.sleep(1)
 	motor.stop()
 
 def right_forward():
 	print "turn right"
 	turn.turn_right()
-	motor.forwardWithSpeed()
+	motor.forwardWithSpeed(spd=100)
 	time.sleep(1)
 	motor.stop()
 	turn.home()
@@ -31,7 +31,7 @@ def right_forward():
 def left_forward():
 	print "turn left"
 	turn.turn_left()
-	motor.forwardWithSpeed()
+	motor.forwardWithSpeed(spd=100)
 	time.sleep(1)
 	motor.stop()
 	turn.home()
