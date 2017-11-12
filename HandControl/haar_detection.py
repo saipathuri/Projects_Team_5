@@ -14,7 +14,6 @@ motor.setup()
 turn.setup()
 turn.home()
 
-scanning_delay = .5
 
 while True:
 
@@ -37,8 +36,6 @@ while True:
 	cv2.imshow('frame',frame)
 	if cv2.waitKey(1) & 0xFF == ord('q'):
 		break
-	print "waiting for scanning_delay"
-	time.sleep(scanning_delay)
 
 # When everything done, release the capture
 cap.release()
