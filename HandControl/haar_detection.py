@@ -7,7 +7,7 @@ import time
 from threading import Thread
 
 cap = cv2.VideoCapture(0)
-cascPath = "haarcascade_frontalface_default.xml"
+cascPath = "closed_front_palm.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
 
 motor.setup()
