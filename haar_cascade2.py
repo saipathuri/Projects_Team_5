@@ -40,26 +40,6 @@ def left_forward():
 	motor.stop()
 	turn.home()
 
-def count_frames_manual(cap):
-    # initialize the total number of frames read
-    total = 0
-    
-    # loop over the frames of the video
-    while True:
-        # grab the current frame
-        (grabbed, frame) = cap.read()
-        
-        # check to see if we have reached the end of the
-        # video
-        if not grabbed:
-            break
-        
-        # increment the total number of frames read
-        total += 1
-    
-    # return the total number of frames in the video file
-    return total
-
 while True:
 	ret, frame = cap.read()
 
@@ -68,17 +48,17 @@ while True:
 	hands = handCascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
 	num_hands = len(hands)
 
-   	if num_hands == 0
+   	if num_hands == 0:
 		total += 1
-	else
+	else:
 		total = 0
     
-    	if total > 15
+    	if total > 15:
         	total = 0
         	camTurn.Current_x = 0
         	pwm.write(14,0,camTurn.Current_x)
         
-        	while camTurn.Current_x < 640 or num_hands == 0
+        	while camTurn.Current_x < 640 or num_hands == 0:
             		Thread(target = move_increase_x).start()
             		hands
             		num_hands
@@ -86,7 +66,7 @@ while True:
 	for (x, y, w, h) in hands:
 		cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
 		if x > 215 and x < 430
-            if camTurn.Current_x < 295
+            if camTurn.Current_x < 295:
                 Thread(target = left_forward).start()
 			elif camTurn.Current_x > 345
                 Thread(target = right_forward).start()
